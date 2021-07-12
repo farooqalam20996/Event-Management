@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "jacobApp",
+    "slug": "jacobApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "userInterfaceStyle": "automatic"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.quadtech.jacob"
+    },
+    "androidNavigationBar": {
+      "visible": true,
+      "barStyle": "light-content",
+      "backgroundColor": "transparent"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

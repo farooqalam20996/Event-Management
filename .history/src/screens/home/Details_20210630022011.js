@@ -1,0 +1,82 @@
+import React, { useEffect } from 'react';
+import {
+    View,
+    Text, 
+    StyleSheet,
+    ScrollView
+} from 'react-native';
+import { useTheme } from '@react-navigation/native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Container } from '../../components/common/Container';
+import SimpleHeader from '../../components/common/SimpleHeader';
+import ImageListCard from '../../components/home-events/ImageListCard';
+import ButtonRow from '../../components/home-events/ButtonRow';
+import { gray } from '../../assets/colors';
+import ReviewCard from '../../components/home-events/ReviewCard';
+
+const images = {
+    "1":"https://cdn.dnaindia.com/sites/default/files/styles/full/public/2021/03/14/964088-fast-food.jpg",
+    "2":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvxAJcSQRs2u2vkyS5GoKLm66Op0CqWt0rjg&usqp=CAU",
+    "3":"https://lh3.googleusercontent.com/proxy/wzOWACHtfc2Yo0cAzAaIAkSlefrelHS_eG7VH51Q3E1sfhXSeNddUrWMJQM3ltmzaIR-YZ_NDTDeFjiVgZ_nnRGU1vaslLvpVqZMtfaBtJilp_bdiw",
+    "4":"https://aussiegossip.com.au/wp-content/uploads/2020/09/pexels-photo-1633578.jpeg",
+}
+
+const Details = () => {
+    // useEffect(()=>{
+    //     alert("Sant Martin Restaurant".slice(0,5))
+    // },[])
+
+    const { colors } = useTheme();
+    return(
+        <Container>
+            <SimpleHeader
+                backIcon
+                heading={"Sant Martin Restaurant"}
+                icon1="share-social"
+                icon2="heart"
+            />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <ImageListCard
+                    text="Chicken wings, Chicken BBQ...."
+                    images={images}
+                />
+                <ButtonRow
+                    button1Icon={"call"}
+                    button1Text={"+1 (234) 4567"}
+                    button2Icon={"location"}
+                    button2Text={"14th Street..."}
+                />
+                <View style={styles.textContainer}>
+                    <Text style={[styles.heading,{fontSize:hp('3%'), color:colors.text}]}>Sant Martin Restaurant</Text>
+                    <Text style={[styles.text,{color:colors.text}]}>Chicken wings, Chicken BBQ....</Text>
+                </View>
+                <View style={[styles.textContainer]}>
+                    <Text style={[styles.heading,{color:colors.text}]}>Description</Text>
+                    <Text style={[styles.text,{color:colors.text}]}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Text>
+                </View>
+                <ReviewCard/>
+            </ScrollView>
+        </Container>
+    )
+}
+export default Details;
+
+const styles = StyleSheet.create({
+    textContainer:{
+        paddingTop:hp('2.5%'),
+        paddingBottom:hp('2%'),
+        borderBottomWidth:2,
+        borderBottomColor:gray,
+    },
+    heading:{
+        color:'#474747',
+        fontFamily:'Bold',
+        fontSize:hp('2.5%')
+    },
+    text:{
+        marginTop:hp('1.5%'),
+        // color:'#919191',
+        fontFamily:'Regular',
+        fontSize:hp('2%')
+    }
+})
