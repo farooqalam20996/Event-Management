@@ -10,9 +10,8 @@ import { black, lightGray, primary } from '../../assets/colors';
 import { Ionicons } from '@expo/vector-icons';
 import {useTheme} from '../../theme/ThemeContext'; 
 
-const Row = ({data, icon, onPress}) => {
+const Row = ({icon, onPress, text, action, iconLeft}) => {
     const {colors} = useTheme()
-    const {text, action, iconLeft } = data;
     return(
         <TouchableWithoutFeedback onPress={onPress}>
             <View style={styles.container}>

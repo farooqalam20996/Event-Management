@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator} from '@react-navigation/stack';
-import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

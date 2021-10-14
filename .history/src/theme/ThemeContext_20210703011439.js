@@ -1,8 +1,8 @@
 
-import AsyncStorage from '@react-native-community/async-storage';
 import React,{useState, useEffect, useContext, createContext} from 'react';
 import {useColorScheme} from 'react-native-appearance';
 import {Light, Dark} from './index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ThemeContext = createContext({
     isDark: false,

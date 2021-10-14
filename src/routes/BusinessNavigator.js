@@ -18,6 +18,9 @@ import CreateEvent from '../screens/events/CreateEvent';
 import BusinessHome from '../screens/home/BusinessHome';
 import Packages from '../screens/others/Packages';
 import CardDetails from '../screens/others/CardDetails';
+import Account_Setting from '../screens/settings/Account_Setting/Account_Setting';
+import Edit_Business from '../screens/settings/Account_Setting/Edit_Business';
+import CommonNavigator from './Common_Navigator';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -105,6 +108,7 @@ function HomeStack() {
     return (
         <Stack.Navigator headerMode="none">
             <Stack.Screen name="BusinessHome" component={BusinessHome} />
+            <Stack.Screen name="EventDetails" component={EventDetails} />
         </Stack.Navigator>
     );
   }
@@ -139,7 +143,8 @@ function OtherStack() {
     return (
       <Stack.Navigator headerMode={"none"}>
         <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Theme" component={Theme} />
+        <Stack.Screen name="CommonNavigator" component={CommonNavigator}/>
+        {/* <Stack.Screen name="Theme" component={Theme} /> */}
         <Stack.Screen name="Packages" component={Packages} />
         <Stack.Screen name="CardDetails" component={CardDetails} />
       </Stack.Navigator>
@@ -166,6 +171,9 @@ export default function App(){
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="MessagesStack" component={MessagesStack} />
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="NotificationsStack" component={NotificationsStack} />
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="OtherStack" component={OtherStack}/>
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="CommonNavigator" component={CommonNavigator}/> */}
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Account_Setting" component={Account_Setting}/>
+            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Edit_Business" component={Edit_Business}/> */}
         </Stack.Navigator>
         </>
     )

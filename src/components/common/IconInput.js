@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { black, darkGray, gray } from '../../assets/colors';
 
-const IconInput = ({style, inputStyle, phone, onChange, value, iconColor, icon, placeholder, inputRef, onSubmitPress, blur,pass, keyboard}) => {
+const IconInput = ({style, inputStyle, phone, onChange, value, iconColor, icon, placeholder, inputRef, onSubmitPress, blur,pass, keyboard,AutoFocus, maxlength}) => {
     const input = useRef(null);
     const [visible, setVisible]  = useState(true)
     return(
@@ -35,7 +35,9 @@ const IconInput = ({style, inputStyle, phone, onChange, value, iconColor, icon, 
                 ref={inputRef}
                 onSubmitEditing={onSubmitPress}
                 secureTextEntry={pass ? visible : !visible}
-                keyboardType={keyboard}
+                keyboardType={keyboard} 
+                autoFocus={AutoFocus}
+                maxLength={maxlength}
             />
             {pass
                 ?

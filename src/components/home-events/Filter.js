@@ -9,7 +9,7 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { primary, white } from '../../assets/colors';
 
 
-const Filter = ({filters}) => {
+const Filter = ({filters, navigation}) => {
     return(
         <View style={styles.container}>
             <ScrollView
@@ -18,8 +18,8 @@ const Filter = ({filters}) => {
                 showsHorizontalScrollIndicator={false}
             >
                 {filters.map(filter=>
-                    <View key={filter.id} style={styles.card}>
-                        <Text style={styles.text}>{filter.name}</Text>
+                    <View key={filter.id} style={styles.card} >
+                        <Text style={styles.text} onPress={()=> navigation.navigate("EventsBy_Category",{id:filter.id, name:filter.category_name})} >{filter.category_name}</Text>
                     </View>
                 )}
             </ScrollView>
@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
         height:hp('4%'),
         marginRight:hp('-4%'),
         marginLeft:hp('-4%'),
-        marginTop:hp('2.5%'),
-        marginBottom:hp('2%')
+        marginTop:hp('1%'),
+        marginBottom:hp('1%')
     },
     card:{
         minWidth:hp('8%'),
         padding:hp('1%'),
+        paddingHorizontal:hp("1.5%"),
         marginRight:hp('1%'),
         alignItems:'center',
         borderRadius:15,

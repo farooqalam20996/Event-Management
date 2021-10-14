@@ -22,34 +22,41 @@ const images = {
     "4":"https://aussiegossip.com.au/wp-content/uploads/2020/09/pexels-photo-1633578.jpeg",
 }
 
-const Reservation = () => {
+const Reservation = ({Onpress, R_Seats, T_Seats, Price, date, mm}) => {
 
     const { colors } = useTheme();
     return(
-        <Container>
-            <SimpleHeader
-                backIcon
-                heading={"Reservation"}
-                icon1="share-social"
-                icon2="heart"
-                style={{marginBottom:hp('1%')}}
-            />
+        // <Container>
+        //     <SimpleHeader
+        //         backIcon
+        //         heading={"Reservation"}
+        //         icon1="share-social"
+        //         icon2="heart"
+        //         style={{marginBottom:hp('1%')}}
+        //     />
             <ScrollView showsVerticalScrollIndicator={false}>
-                <ImageListCard
+                {/* <ImageListCard
                     text="Chicken wings, Chicken BBQ...."
                     images={images}
-                />
-                <View style={[styles.textContainer,{borderBottomColor:colors.border}]}>
+                /> */}
+                {/* <View style={[styles.textContainer,{borderBottomColor:colors.border}]}>
                     <Text style={[styles.heading,{fontSize:hp('3%'), color:colors.heading}]}>Sant Martin Restaurant</Text>
                     <Text style={[styles.text,{color:colors.text}]}>Chicken wings, Chicken BBQ....</Text>
                 </View>
                 <View style={[styles.textContainer,{borderBottomColor:colors.border}]}>
                     <Text style={[styles.heading,{color:colors.heading}]}>Description</Text>
                     <Text style={[styles.text,{color:colors.text}]}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Text>
-                </View>
-                <ReservationCard/>
+                </View> */}
+                <ReservationCard
+                    Onpress={Onpress}
+                    RemainingSeats={R_Seats}
+                    TotalSeats={T_Seats}
+                    Price={Price}
+                    date={date}
+                    month={mm}
+                />
             </ScrollView>
-        </Container>
+        // </Container>
     )
 }
 export default Reservation;

@@ -42,7 +42,7 @@ const Notifications = () => {
                     <View key={item.id}>
                         <Row 
                             icon={'arrow-forward'}
-                            data={item}
+                            text={item.text}
                             onPress={()=>alert(item.text)}  
                         />
                     </View>

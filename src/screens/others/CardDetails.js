@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect, useState} from 'react';
 import { 
     Text,
     View,
@@ -11,20 +12,89 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { black, primary, white } from '../../assets/colors';
 import { Container } from '../../components/common/Container';
 import Header from '../../components/common/Header';
+import { setItem } from '../../persist-storage';
 import { useTheme } from '../../theme/ThemeContext';
+import {Entypo} from "@expo/vector-icons";
+// import { requestOneTimePayment, requestBillingAgreement } from 'react-native-paypal'; 
 
- const CardDetails = () => {
+var stripe = require("stripe-client")('pk_test_51JZhS1B0GIZbIiNiTUydZXf1ES1nywg19iBeJ4MCG8Q3rqKOxfoCQPmHKkPVObPpkA4XmlKnMxf3TaLLDCrUIhxi00uINAR31L')
+
+ const CardDetails = ({navigation}) => {
     
+    let cardno;
+    let mm;
+    let yy;
+    let cvv;
+
     const {colors} = useTheme();
     const [name, setName] = useState('');
     const [cardNo, setCardNo] = useState('');
     const [MM, setMM] = useState('');
     const [YY, setYY] = useState('');
     const [CVV, setCVV] = useState('');
+    const [userType, setUserType] = useState(null);
+
+    useEffect(()=>{
+        AsyncStorage.getItem('user', (err, data)=> {
+            setUserType(JSON.parse(data).type)
+        })
+        // PayPal();
+    })
     
-    const payInvoice = () =>{
-        alert('paid')
+    const payInvoice = async () =>{
+        if(userType === "company"){
+            await setItem('paid','true')
+            navigation.navigate('CreateEvent')
+        }
+        else{
+            alert("Seat Resereved paid")
+        }
     }
+
+
+    /// Create Stripe Token For Payment
+    const handleToken =async ()=>{
+        const information = {
+            card: {
+                number:  cardNo,
+                exp_month:parseInt(MM),
+                exp_year:  parseInt(YY),
+                cvc: CVV,
+                name: name,
+            }
+          }
+
+        var card = await stripe.createToken(information)
+
+        if(card.error){
+            alert(JSON.stringify(card.error.code || card.error.type))
+        }   
+        else{
+            alert(JSON.stringify(card.id))
+            console.log(JSON.stringify(card.id))
+        }
+    }
+
+    // const PayPal = async() => {
+    //     const {
+    //         nonce,
+    //         payerId,
+    //         email,
+    //         firstName,
+    //         lastName,
+    //         phone
+    //     } = await requestOneTimePayment(
+    //       token,
+    //       {
+    //         amount: '5', 
+    //         currency: 'GBP',
+    //         localeCode: 'en_GB', 
+    //         shippingAddressRequired: false,
+    //         userAction: 'commit', 
+    //         intent: 'authorize', 
+    //       }
+    //     );
+    // }
     
     return(
         <Container>
@@ -102,6 +172,17 @@ import { useTheme } from '../../theme/ThemeContext';
                         <Text style={{color:white, fontFamily:'Regular', fontSize:hp('2.25%'),padding:hp('1.5%')}}>
                             PAY INVOICE
                         </Text>
+                    </TouchableOpacity>
+
+                    <Text style={{marginVertical:hp("2%"), fontSize:hp("1.8%"), alignSelf:"center", color:black, fontFamily:"Bold"}} >
+                         OR 
+                    </Text>
+
+                    <TouchableOpacity onPress={payInvoice} style={[styles.button, {width:"100%", flexDirection:'row'}]}>
+                        <Text style={{color:white, fontFamily:'Regular', fontSize:hp('2.25%'),padding:hp('1.5%')}}>
+                            Pay with PayPal
+                        </Text>
+                        <Entypo name="paypal" size={hp("3%")} color={"white"} />
                     </TouchableOpacity>
                 </View>
                 {/* <View>
