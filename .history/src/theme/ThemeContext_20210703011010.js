@@ -1,6 +1,6 @@
 
 import React,{useState, useEffect, useContext, createContext} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useColorScheme} from 'react-native-appearance';
 import {Light, Dark} from './index';
 

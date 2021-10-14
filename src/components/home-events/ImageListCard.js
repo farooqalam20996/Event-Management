@@ -18,7 +18,7 @@ var urlImages = [];
 const ImageListCard = ({images, text}) => {
     useEffect(()=>{
         urlImages=[]
-        Object.values(images).map(image=>urlImages.push({url:image}))
+        images.map(image=>urlImages.push({url:image}))
     })
     const {colors} = useTheme();
     const [imageDisplay,setImageDisplay] = useState({uri:images[1]});
@@ -57,7 +57,7 @@ const ImageListCard = ({images, text}) => {
                     imageUrls={urlImages}
                 />
             </Modal>
-            {Object.keys(images).length>1
+            {images.length>1
                 ?
                 <>
                     <TouchableOpacity onPress={()=>setVisible(true)}>
@@ -69,8 +69,8 @@ const ImageListCard = ({images, text}) => {
                     </TouchableOpacity>
                     <ScrollView style={styles.imageRow} showsHorizontalScrollIndicator={false} horizontal>
                         {
-                            Object.values(images).map((image)=>(
-                                <TouchableOpacity key = {image} onPress={()=>setImageDisplay({uri: image})}>
+                            images.map((image, i)=>(
+                                <TouchableOpacity key = {i} onPress={()=>setImageDisplay({uri: image})}>
                                     {/* <View style={styles.container}> */}
                                         <ImageLoader
                                             style={styles.image} 

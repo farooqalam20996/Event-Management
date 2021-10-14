@@ -4,6 +4,7 @@ import {
     Text,
     StyleSheet,
     TouchableWithoutFeedback,
+    Image,
 } from 'react-native';
 import {useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -14,6 +15,8 @@ import { useTheme } from '../../theme/ThemeContext'
 import UserSignup from '../../components/auth/signup/UserSignup';
 import BusinessSignup from '../../components/auth/signup/BusinessSignup';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
+import { Individual_SignUp } from '../../redux/action/Ind_SIgnUpAction';
 
 const Signup = () => {
     const [switchTab,setSwitchTab] = useState(true); // false for Business
@@ -26,12 +29,16 @@ const Signup = () => {
     const onSignupPress = () => {
         navigation.navigate('Login')
     }
+
     return (
         <ScrollView 
             style={{backgroundColor:isDark ? black: primary}} 
             contentContainerStyle={[styles.container,{backgroundColor:isDark ? black: primary}]}
         >
-            <Text style={styles.logo}>LOGO</Text>
+            <Image 
+                source={require("../../assets/images/logo.png")}
+                style={{width:hp("15%"), height:hp("15%")}}
+            />
             <Text style={styles.heading}>Sign up</Text>
             <View style={styles.tabContainer}>
                 <TouchableWithoutFeedback onPress={toggleTab} style={styles.tab}>
@@ -46,8 +53,8 @@ const Signup = () => {
                 </TouchableWithoutFeedback>
             </View>
             {switchTab
-                ? <UserSignup onSignupPress={onSignupPress}/>
-                : <BusinessSignup onSignupPress={onSignupPress}/>
+                ? <UserSignup navigation={navigation} />
+                : <BusinessSignup />
             }
         </ScrollView>
     )
@@ -55,9 +62,9 @@ const Signup = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: primary,
+        backgroundColor: "red",
         alignItems:'center',
-        paddingTop:hp('20%')
+        paddingTop:hp('10%')
     },
     logo:{
         color: white,

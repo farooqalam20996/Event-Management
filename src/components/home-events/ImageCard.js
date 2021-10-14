@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
     ImageBackground,
     TouchableWithoutFeedback,
     StyleSheet,
+    Share
 } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Ionicons } from '@expo/vector-icons';
-import { purple, white } from '../../assets/colors';
+import { black, purple, white } from '../../assets/colors';
+import { API } from '../../redux/MainURL';
+import { Onshare } from '../common/Share';
+import ImageCard_PH from '../../screens/Screen_PlaceHolder/ImageCard_PH';
+var axios = require('axios');
 
-const ImageCard = ({onPress, style, image, title, desc, loc, discount, date}) => {
+const ImageCard = ({onPress, style, image, title, desc, loc, Favorite, discount, date, isBusiness, UserID, EventID, BusinessID, onLikePress, isLike, isEvent}) => {
+
+    const[load, setLoad]=useState(true)
 
     const renderBadge = () => {
         if(discount || date ){
@@ -31,15 +38,26 @@ const ImageCard = ({onPress, style, image, title, desc, loc, discount, date}) =>
             return
         }
     }
-
+ 
     return(
-        <TouchableWithoutFeedback onPress={onPress}>
-            <ImageBackground borderRadius={hp('1%')} style={[styles.container,style]} source={image}>
+        <TouchableWithoutFeedback onPress={onPress} >
+            <ImageBackground borderRadius={hp('1%')} style={[styles.container,style]} source={image} onLoad={()=> setLoad(false)} >
+                {
+                    load && <ImageCard_PH />
+                }
                 <View style={discount || date ? styles.top : [styles.top,{justifyContent:'flex-end'}]}>
                     {renderBadge()}
                     <View style={{flexDirection:'row'}}>
-                        <Ionicons name="share-social-sharp" size={20} color={white} />
-                        <Ionicons style={{marginLeft:10}} name="heart" size={20} color={white} />
+                        <Ionicons name="share-social-sharp" size={20} color={white} onPress={()=> Onshare(title, desc, API)} />
+                        {
+                            isBusiness?
+                            <Ionicons style={{marginLeft:10}} name="heart" size={20} color={isLike?"red":white} onPress={onLikePress} />
+                            :
+                            (
+                                !isEvent&&
+                                    <Ionicons style={{marginLeft:10}} name="heart" size={20} color={isLike?"red":white} onPress={onLikePress} />
+                            )
+                        }
                     </View>
                 </View>
                 <View style={styles.bottom}>
@@ -52,6 +70,7 @@ const ImageCard = ({onPress, style, image, title, desc, loc, discount, date}) =>
                 </View>
             </ImageBackground>
         </TouchableWithoutFeedback>
+            
     )
 }
 export default ImageCard;

@@ -3,14 +3,14 @@ import '@firebase/auth';
 import '@firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyByi705s9gkhgoPY2RGlMz-KCHfeMHnMdU",
-    authDomain: "jacobanderson-ba357.firebaseapp.com",
-    projectId: "jacobanderson-ba357",
-    storageBucket: "jacobanderson-ba357.appspot.com",
-    messagingSenderId: "887527998390",
-    appId: "1:887527998390:web:464dce22759fd905d2f717",
-    measurementId: "G-04V10L1G5W"
+    apiKey: "AIzaSyDFrcbz31dPZ9hs6OSJTRD9ZlhfCQ3d8_w",
+    authDomain: "jacob-57cd8.firebaseapp.com",
+    projectId: "jacob-57cd8",
+    storageBucket: "jacob-57cd8.appspot.com",
+    messagingSenderId: "231287788012",
+    appId: "1:231287788012:web:0915858073f27fa074b0c9",
 }
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
@@ -21,3 +21,10 @@ class FirebaseConfig {
 }
 
 export { FirebaseConfig };
+
+// if (!firebase.apps.length) {
+//     firebase.initializeApp(firebaseConfig);
+//     firebase.firestore().settings({ experimentalForceLongPolling: true });
+// }
+
+// export { firebase };

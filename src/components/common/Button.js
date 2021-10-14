@@ -5,14 +5,22 @@ import {
     TouchableOpacity,
     Text,
     Image,
+    ActivityIndicator,
 } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export const Button = ({onPress, color, text, textColor, image, style}) => {
+export const Button = ({onPress, color, text, textColor, image, style, Loading, disabled}) => {
     return(
-        <TouchableOpacity onPress={onPress} style={[styles.container,{backgroundColor:color}, style]}>
-            {image && <Image style={styles.image} source={image}/>}
-            <Text style={[styles.text,{color: textColor}]}>{text}</Text>
+        <TouchableOpacity disabled={Loading || disabled} onPress={onPress} style={[styles.container,{backgroundColor:color}, style]}>
+           {
+               Loading?
+                    <ActivityIndicator size="small" color="white" />
+                    :
+                    <>
+                        {image && <Image style={styles.image} source={image}/>}
+                        <Text style={[styles.text,{color: textColor}]}>{text}</Text>
+                    </>
+           }
         </TouchableOpacity>
     )
 }

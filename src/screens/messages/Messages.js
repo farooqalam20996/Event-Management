@@ -24,6 +24,7 @@ const Messages = () => {
     return(
         <Container>
             <Header
+                backIcon={true}
                 heading={"Messages"}
                 icon1="settings-outline"
                 icon1Press={()=>navigation.navigate('OtherStack',{screen:'Settings'})}

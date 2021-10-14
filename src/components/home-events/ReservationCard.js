@@ -9,29 +9,29 @@ import { primary, red, white } from '../../assets/colors';
 import { useTheme } from '../../theme/ThemeContext';
 import { Button } from '../common/Button';
 
-
-const ReservationCard = ({}) => {
+const ReservationCard = ({Onpress, TotalSeats, RemainingSeats, date, month, Price}) => {
     const {colors} = useTheme();
+
     return(
         <View style={styles.container}>
             <View style={styles.row}>
                 <View style={styles.card}>
-                    <Text style={styles.text}>32</Text>
+                    <Text style={styles.text}>{TotalSeats}</Text>
                     <Text style={styles.subText}>Total Seats</Text>
                 </View>
                 <View style={styles.card}>
-                    <Text style={styles.text}>16</Text>
+                    <Text style={styles.text}>{RemainingSeats}</Text>
                     <Text style={styles.subText}>Reserved Seats</Text>
                 </View>
                 <View style={styles.card}>
-                    <Text style={styles.text}>30th</Text>
-                    <Text style={styles.subText}>December</Text>
+                    <Text style={styles.text}>{date}</Text>
+                    <Text style={styles.subText}>{month}</Text>
                 </View>
             </View>
             <View style={[styles.row,{marginTop:hp('3%')}]}>
-                <Text style={[styles.price,{color:colors.text}]}>$120 Per Seat</Text>
+                <Text style={[styles.price,{color:colors.text}]}>${Price} Per Seat</Text>
                 <Button
-                    onPress={()=>alert('reserved')}
+                    onPress={Onpress}
                     color={red}
                     text="Reserve Now"
                     textColor={white}

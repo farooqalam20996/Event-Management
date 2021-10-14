@@ -20,6 +20,12 @@ import BusinessDetails from '../screens/home/BusinessDetails';
 import ChatRoom from '../screens/messages/ChatRoom';
 import Reservation from '../screens/events/Reservation';
 import Slide from '../assets/animation/Slide'
+import CommonNavigator from './Common_Navigator';
+import Edit_Business from '../screens/settings/Account_Setting/Edit_Business';
+import Account_Setting from '../screens/settings/Account_Setting/Account_Setting';
+import EventsBy_Category from '../screens/categories/EventsBy_Category';
+import CardDetails from '../screens/others/CardDetails';
+import Search_Business from "../screens/home/Search__Events&Business";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -72,7 +78,7 @@ function UserNavigator() {
             component={EventsStack} 
             initialParams={{colors}}
         />
-        <Tab.Screen 
+        {/* <Tab.Screen 
             options={{
                 tabBarIcon: ({ focused }) => (
                     <>
@@ -84,6 +90,19 @@ function UserNavigator() {
             }} 
             name="Messages" 
             component={MessagesStack}
+        /> */}
+         <Tab.Screen 
+            options={{
+                tabBarIcon: ({ focused }) => (
+                    <>
+                        <FontAwesome color={white} size={focused ? 30 : 27} name={'heart'}/>
+                        {true&& <Text style={{fontSize:10, color:white, fontFamily:"Regular"}}>Favorites</Text>}
+                    </>
+                ),
+                
+            }} 
+            name="Favorites" 
+            component={FavoriteStack}
         />
         <Tab.Screen 
             options={{
@@ -123,6 +142,8 @@ function HomeStack() {
         <Stack.Navigator headerMode="none">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="BusinessDetails" component={BusinessDetails} />
+            <Stack.Screen name="Search_Business" component={Search_Business} />
+            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="EventsBy_Category" component={EventsBy_Category} />
         </Stack.Navigator>
     );
   }
@@ -133,6 +154,7 @@ function EventsStack() {
             <Stack.Screen name="Events" component={Events} />
             <Stack.Screen name="EventDetails" component={EventDetails} />
             <Stack.Screen name="Reservation" component={Reservation} />
+            <Stack.Screen name="Search_Business" component={Search_Business} />
         </Stack.Navigator>
     );
 }
@@ -145,10 +167,23 @@ function MessagesStack() {
       </Stack.Navigator>
     );
 }
+
+function FavoriteStack() {
+    return (
+      <Stack.Navigator headerMode={"none"}>
+        <Stack.Screen name="Favorites" component={Favorites} />
+        <Stack.Screen name="CardDetails" component={CardDetails} />
+        <Stack.Screen name="EventDetails" component={EventDetails} />
+        <Stack.Screen name="BusinessDetails" component={BusinessDetails} />
+      </Stack.Navigator>
+    );
+} 
+
 function CategoriesStack() {
     return (
       <Stack.Navigator headerMode={"none"}>
         <Stack.Screen name="categories" component={Categories} />
+        <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="EventsBy_Category" component={EventsBy_Category} />
       </Stack.Navigator>
     );
 }
@@ -163,8 +198,12 @@ function OtherStack() {
     return (
       <Stack.Navigator headerMode={"none"}>
         <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Theme" component={Theme} />
+        <Stack.Screen name="CommonNavigator" component={CommonNavigator}/>
+        {/* <Stack.Screen name="Theme" component={Theme} /> */}
         <Stack.Screen name="Favorites" component={Favorites} />
+        <Stack.Screen name="CardDetails" component={CardDetails} />
+        <Stack.Screen name="EventDetails" component={EventDetails} />
+        <Stack.Screen name="BusinessDetails" component={BusinessDetails} />
       </Stack.Navigator>
     );
 }
@@ -189,7 +228,14 @@ export default function App(){
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="MessagesStack" component={MessagesStack} />
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="NotificationsStack" component={NotificationsStack} />
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="CategoriesStack" component={CategoriesStack} />
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="EventsBy_Category" component={EventsBy_Category} /> */}
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="OtherStack" component={OtherStack}/>
+
+            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Messages" component={Messages} />
+            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="ChatRoom" component={ChatRoom} />
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="CommonNavigator" component={CommonNavigator}/> */}
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Account_Setting" component={Account_Setting}/>
+            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Edit_Business" component={Edit_Business}/>  */}
         </Stack.Navigator>
         </>
     )

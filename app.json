@@ -5,9 +5,12 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon1.png",
+    "facebookScheme":"fb593054675199896",
+    "facebookAppId":"593054675199896",
+    "facebookDisplayName":"LYV",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,7 +26,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon1.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.quadtech.jacob"

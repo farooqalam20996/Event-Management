@@ -85,20 +85,20 @@ export const settingItems = [
         id:1,
         text:"Account Settings",
         iconLeft:"person",
-        action:"Theme",
+        action:"Account_Setting",
     },
     {
         id:2,
         text:"Notifications",
         iconLeft:"notifications",
-        action:"Theme",
+        action:"Notification_Setting",
     },
-    {
-        id:3,
-        text:"Favorites",
-        iconLeft:"heart",
-        action:"Theme",
-    },
+    // {
+    //     id:3,
+    //     text:"Favorites",
+    //     iconLeft:"heart",
+    //     action:"Theme",
+    // },
     {
         id:4,
         text:"Theme",
@@ -109,8 +109,14 @@ export const settingItems = [
         id:5,
         text:"About App",
         iconLeft:"information-circle",
-        action:"Theme",
+        action:"AboutApp",
     },
+    // {
+    //     id:6,
+    //     text:"Sign Out",
+    //     iconLeft:"exit",
+    //     action:"Login",
+    // },
 ]
 export const notifications = [
     {
@@ -135,4 +141,26 @@ export const notifications = [
     },
     
    
+]
+
+
+export const AccountSettingItems = [
+    {
+        id:1,
+        text:"Edit Business",
+        iconLeft:"create-outline",
+        action:"Edit_Business",
+    },
+    {
+        id:2,
+        text:"Edit Account",
+        iconLeft:"create-outline",
+        action:"Edit_Account",
+    },
+    {
+        id:3,
+        text:"Change Password",
+        iconLeft:"key-outline",
+        action:"Change_Password",
+    },    
 ]

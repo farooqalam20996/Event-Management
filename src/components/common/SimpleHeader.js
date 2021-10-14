@@ -11,7 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../theme/ThemeContext';
 
 
-const SimpleHeader = ({backIcon,heading, icon1, icon1Press, icon2, icon2Press, style}) => {
+const SimpleHeader = ({backIcon,heading, icon1, icon1Press, icon2, icon2Press, style, IfFavrt}) => {
     const navigation = useNavigation();
     const {colors} = useTheme();
     const len = heading.length;
@@ -45,7 +45,7 @@ const SimpleHeader = ({backIcon,heading, icon1, icon1Press, icon2, icon2Press, s
                     <Ionicons
                         name={icon2}
                         size={24}
-                        color={'red'}
+                        color={IfFavrt?"red":"gray"}
                         onPress={icon2Press}
                         style={{marginLeft:hp('1.5%')}}
                     />
