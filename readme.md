@@ -98,7 +98,7 @@ The platform is designed to support both commercial and community-driven events.
 ## Author
 
 **Muhammad Farooq Alam Abbasi**
-Hybrid App & Web Developer
+FullStack Engineer
 
 Portfolio: [https://farooqalam.com/portfolio/](https://farooqalam.com/portfolio/)
 LinkedIn: https://www.linkedin.com/in/muhammad-farooq-alam-abbasi-174616153/
