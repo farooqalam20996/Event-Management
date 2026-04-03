@@ -101,7 +101,7 @@ The platform is designed to support both commercial and community-driven events.
 Hybrid App & Web Developer
 
 Portfolio: [https://farooqalam.com/portfolio/](https://farooqalam.com/portfolio/)
-LinkedIn: Add your LinkedIn URL
+LinkedIn: https://www.linkedin.com/in/muhammad-farooq-alam-abbasi-174616153/
 
 ---
 
