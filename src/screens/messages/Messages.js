@@ -87,22 +87,27 @@ class Messages extends React.Component {
                 lastMessageBy={chat.data.lastMessageBy}
                 lastMessageTime ={chat.data.lastMessage}
                 onPress={() => this.props.navigation.navigate(
-                    'ChatRoom',
-                    {
-                        person:{
-                            id: idUser,
-                            firebase_id: chat.id.split("_")[0] == user.firebase_id ? chat.id.split("_")[1] : chat.id.split("_")[0],
-                            name: name,
-                            image: Photo,
-                        },
+                    "MessagesStack", {
+                        screen: 
+                        'ChatRoom', 
+                        params:
+                        {
+                            person:{
+                                id: idUser,
+                                firebase_id: chat.id.split("_")[0] == user.firebase_id ? chat.id.split("_")[1] : chat.id.split("_")[0],
+                                name: name,
+                                image: Photo,
+                            },
+                        }
                     }
+                    
                 )}
             />
         )
     }
-    onChatPress = () => {
-        this.navigation.navigate('MessagesStack',{screen:'ChatRoom'})
-    } 
+    // onChatPress = () => {
+    //     this.navigation.navigate('MessagesStack',{screen:'ChatRoom'})
+    // } 
     render(){
         const { chats } = this.state;
         if(this.state.loading == true){
@@ -112,7 +117,7 @@ class Messages extends React.Component {
         return(
             <Container>
                 <Header
-                    backIcon={true}
+                    backIcon={this.props.user.type=="individual"&&true}
                     heading={"Messages"}
                     icon1="settings-outline"
                     icon1Press={()=>this.navigation.navigate('OtherStack',{screen:'Settings'})}

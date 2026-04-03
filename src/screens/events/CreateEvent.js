@@ -79,6 +79,10 @@ class CreateEvent extends React.Component {
        }
     }
 
+    // componentDidUpdate(){
+    //     console.log(this.props.EventImg)
+    // }
+
     componentDidMount(){
         AsyncStorage.getItem('user', (err, data)=>{
             this.setState({token: JSON.parse(data).token}),
@@ -87,13 +91,10 @@ class CreateEvent extends React.Component {
     }
     
     seatIncrement = () => {
-        // this.setState({reservation: parseInt(this.state.reservation)+1})
-        this.props._EventReservation(parseInt(this.props.EventReservation+1))
+        this.props._EventReservation(parseInt(this.props.EventReservation)+1)
+        // this.props._EventReservation(this.props.EventReservation+1)
     }
     seatDecrement = () => {
-        // if(this.state.reservation > 0){
-        //     this.setState({reservation: parseInt(this.state.reservation)-1})
-        // }
         if(this.props.EventReservation > 0){
             this.props._EventReservation(parseInt(this.props.EventReservation)-1)
         }
@@ -137,8 +138,13 @@ class CreateEvent extends React.Component {
     
     showTimePicker = ()=>{
         this.showMode('time')
-    }
+    } 
 
+    // dispatch(EventImg1(result.uri, imagesArr ))
+
+    OnImagePick = (pickImg) => {
+        this.props._EventImg1(pickImg,this.props.EventImg )
+    } 
 
     render(){
         const {heading} = this.props.route.params.colors
@@ -231,12 +237,11 @@ class CreateEvent extends React.Component {
                     
                     <Text style={[styles.heading,{color:heading}]}>Add Event Reservation</Text>
                     <View style={[styles.row,{justifyContent:'space-between',alignSelf:'center', marginTop:0}]}>
-                        {/* <Text>{this.props.EventReservation}</Text> */}
-                        <IconInput
+                        <IconInput 
                             style={[styles.input,{width:hp('25%')}]}
                             inputStyle={{textAlign:'center'}}
                             placeholder={"00"}
-                            value={this.props.EventReservation}
+                            value={this.props.EventReservation.toString()}
                             onChange={(text)=>this.props._EventReservation(text)}
                             iconColor={gray}
                             keyboard="number-pad"
@@ -259,10 +264,10 @@ class CreateEvent extends React.Component {
                         <MaterialCommunityIcons name="currency-usd" size={24} onPress={this.seatIncrement} style={styles.arrowIcon}/>
                     </View>
                     <View style={[styles.row, {justifyContent:"space-around"}]} >
-                        <ImagePickerExample imagesArr={this.props.EventImg} selectImg={this.props.EventImg[0] ? this.props.EventImg[0]: null}  />
-                        <ImagePickerExample imagesArr={this.props.EventImg} selectImg={this.props.EventImg[1] ? this.props.EventImg[1]: null} />
-                        <ImagePickerExample imagesArr={this.props.EventImg} selectImg={this.props.EventImg[2] ? this.props.EventImg[2]: null} />
-                        <ImagePickerExample imagesArr={this.props.EventImg} selectImg={this.props.EventImg[3] ? this.props.EventImg[3]: null} />
+                        <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.EventImg} selectImg={this.props.EventImg[0] ? this.props.EventImg[0]: null}  />
+                        <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.EventImg} selectImg={this.props.EventImg[1] ? this.props.EventImg[1]: null} />
+                        <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.EventImg} selectImg={this.props.EventImg[2] ? this.props.EventImg[2]: null} />
+                        <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.EventImg} selectImg={this.props.EventImg[3] ? this.props.EventImg[3]: null} />
                     </View>
                     
                     <Button
@@ -339,7 +344,7 @@ function mapDispatchToProps(dispatch) {
         _EventAdd2: (text) => dispatch(EventAdd2(text)),
         _EventDate: (text) => dispatch(EventDate(text)),
         // _EventTime: (text) => dispatch(EventTime(text)),
-        _EventImg1: (text) => dispatch(EventImg1(text)),
+        _EventImg1: (text, imagesArr) => dispatch(EventImg1(text, imagesArr)),
         _EventReservation: (text) => dispatch(EventReservation(text)),
         _LoadCategories:() => dispatch(LoadCategories()),
 

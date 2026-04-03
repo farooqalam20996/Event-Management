@@ -204,6 +204,7 @@ function OtherStack() {
         <Stack.Screen name="CardDetails" component={CardDetails} />
         <Stack.Screen name="EventDetails" component={EventDetails} />
         <Stack.Screen name="BusinessDetails" component={BusinessDetails} />
+        {/* <Stack.Screen name="ChatRoom" component={ChatRoom} /> */}
       </Stack.Navigator>
     );
 }
@@ -231,8 +232,8 @@ export default function App(){
             {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="EventsBy_Category" component={EventsBy_Category} /> */}
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="OtherStack" component={OtherStack}/>
 
-            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Messages" component={Messages} />
-            <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="ChatRoom" component={ChatRoom} />
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Messages" component={Messages} /> */}
+            {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="ChatRoom" component={ChatRoom} /> */}
             {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="CommonNavigator" component={CommonNavigator}/> */}
             {/* <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Account_Setting" component={Account_Setting}/>
             <Stack.Screen options={{ cardStyleInterpolator: Slide }} name="Edit_Business" component={Edit_Business}/>  */}

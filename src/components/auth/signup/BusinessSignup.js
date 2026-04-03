@@ -93,6 +93,10 @@ class BusinessSignup extends Component{
         console.log(this.props.AddImg)
     }
 
+    OnImagePick = (pickImg) => {
+        this.props._Addimg(pickImg,this.props.AddImg )
+    } 
+
     render() {
         return (
             <>
@@ -197,10 +201,10 @@ class BusinessSignup extends Component{
                 </View>
 
                 <View style={[styles.row, {marginTop:hp("2%"), justifyContent:"space-between"}]} >
-                    <ImagePickerExample imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[0] ? this.props.AddImg[0]: null}  />
-                    <ImagePickerExample imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[1] ? this.props.AddImg[1]: null} />
-                    <ImagePickerExample imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[2] ? this.props.AddImg[2]: null} />
-                    <ImagePickerExample imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[3] ? this.props.AddImg[3]: null} />
+                    <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[0] ? this.props.AddImg[0]: null}  />
+                    <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[1] ? this.props.AddImg[1]: null} />
+                    <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[2] ? this.props.AddImg[2]: null} />
+                    <ImagePickerExample OnImagePick={this.OnImagePick} imagesArr={this.props.AddImg} style={{backgroundColor:purple}} selectImg={this.props.AddImg[3] ? this.props.AddImg[3]: null} />
                 </View>
               
                 <Button
@@ -270,7 +274,7 @@ function mapDispatchToProps(dispatch) {
         _PhoneNumber:(text)=> dispatch(PhoneNumber(text)),
         _AddressLine1:(text)=> dispatch(AddressLine1(text)),
         _AddressLine2:(text)=> dispatch(AddressLine2(text)),
-        _Addimg:(text)=>dispatch(AddImg(text)),
+        _Addimg:(text, imagesArr)=>dispatch(AddImg(text, imagesArr)),
         _User_SignUp:(Name, Email, Password, Conf_Password, Category, Description, PhoneNumber, Address1, Address2, AddImg, toast)=> dispatch(Business_SignUp(Name, Email, Password, Conf_Password, Category, Description, PhoneNumber, Address1, Address2, AddImg, toast)),
         _LoadCategories:() => dispatch(LoadCategories()),
 

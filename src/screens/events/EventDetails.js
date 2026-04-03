@@ -63,15 +63,18 @@ const EventDetails = ({route}) => {
     const sendMessage = () => {
         const businessDetails = EventDetails.user;
         navigation.navigate(
-            'ChatRoom',
-            {
-                person:{
-                    id: businessDetails.id,
-                    firebase_id: businessDetails.firebase_id,
-                    name:businessDetails.name,
-                    image: getImages()[0],
-                    // Photo: this.state.user.Photo
-                },
+            "MessagesStack", {
+                screen: 
+                'ChatRoom', 
+                params:{
+                    person:{
+                        id: businessDetails.id,
+                        firebase_id: businessDetails.firebase_id,
+                        name:businessDetails.name,
+                        image: getImages()[0],
+                        // Photo: this.state.user.Photo
+                    },
+                }
             }
         )
     }
@@ -84,13 +87,14 @@ const EventDetails = ({route}) => {
               }
             };
 
-            console.log(config)
+           
             axios(config)
             .then(function (response) {
                 if(response.data.success){
                     setEventDetails(response.data.data)
                     SetLoader(false)
                     SetError("Event Has No Details ")
+                    console.log("Event Data: ", response.data)
                 }
                 else{
                     SetLoader(false),

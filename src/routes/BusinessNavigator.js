@@ -147,6 +147,7 @@ function OtherStack() {
         {/* <Stack.Screen name="Theme" component={Theme} /> */}
         <Stack.Screen name="Packages" component={Packages} />
         <Stack.Screen name="CardDetails" component={CardDetails} />
+        {/* <Stack.Screen name="ChatRoom" component={ChatRoom} /> */}
       </Stack.Navigator>
     );
 }

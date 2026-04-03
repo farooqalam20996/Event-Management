@@ -8,7 +8,7 @@ import {Ionicons} from "@expo/vector-icons";
 import { useDispatch, useSelector } from 'react-redux';
 import { EventImg1 } from '../../redux/action/CreateEvent_Action';
 
-export default function ImagePickerExample({selectImg, style, imagesArr}) {
+export default function ImagePickerExample({selectImg, style,  OnImagePick}) {
   const [image, setImage] = useState(selectImg);
   
   const dispatch  = useDispatch();
@@ -36,7 +36,8 @@ export default function ImagePickerExample({selectImg, style, imagesArr}) {
 
     if (!result.cancelled) {
       setImage(result.uri);
-      dispatch(EventImg1(result.uri, imagesArr ))
+      // dispatch(EventImg1(result.uri, imagesArr ))
+      OnImagePick(result.uri)
     }
   };
 

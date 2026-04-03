@@ -242,7 +242,7 @@ class Home extends Component{
                         onChange={(text)=>this.setState({Search:text})}
                         onSearch={()=> this.OnSearchPress(this.state.Search)}
                         icon1="chatbox-outline"
-                        icon1Press={()=>this.props.navigation.navigate('Messages')}
+                        icon1Press={()=>this.props.navigation.navigate('MessagesStack')}
                         icon2="funnel-outline"
                         icon2Press={()=> this.setState({Show_Modal: true})}
                         icon3="settings-outline"

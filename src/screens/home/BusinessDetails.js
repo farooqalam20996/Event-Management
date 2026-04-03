@@ -82,15 +82,18 @@ const BusinessDetails = ({route}) => {
     },[])
     const sendMessage = () => {
         navigation.navigate(
-            'ChatRoom',
-            {
-                person:{
-                    id: businessDetails.id,
-                    firebase_id: businessDetails.firebase_id,
-                    name:businessDetails.name,
-                    image: getImages()[0],
-                    // Photo: this.state.user.Photo
-                },
+            "MessagesStack", {
+                screen: 
+                'ChatRoom', 
+                params:{
+                    person:{
+                        id: businessDetails.id,
+                        firebase_id: businessDetails.firebase_id,
+                        name:businessDetails.name,
+                        image: getImages()[0],
+                        // Photo: this.state.user.Photo
+                    },
+                }
             }
         )
     }
